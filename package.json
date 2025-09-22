@@ -1,0 +1,30 @@
+{
+  "name": "single-file-bundler-template",
+  "version": "1.0.0",
+  "description": "Universal single-file bundler template for any web project",
+  "main": "index.html",
+  "scripts": {
+    "build:single": "node scripts/build-single-file.js --no-timestamp",
+    "build:single-pure": "node scripts/build-single-file.js --pure-single",
+    "build:single-pwa": "node scripts/build-single-file.js --keep-pwa",
+    "build:single-only": "vite build --config vite.config.js",
+    "build:single-debug": "vite build --config vite.config.js --logLevel info",
+    "test:single": "node scripts/test-single-file.js",
+    "dev": "vite serve"
+  },
+  "keywords": [
+    "single-file",
+    "bundler",
+    "template",
+    "vite",
+    "html",
+    "inline",
+    "portable"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "vite-plugin-singlefile": "^2.0.0"
+  }
+}

@@ -1,0 +1,42 @@
+name: Build Single File
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build single file
+      run: npm run build:single-clean # 可以根据需求和 README.md 修改为其他构建方式
+
+    - name: Upload build artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: single-file-build
+        path: dist/
+        retention-days: 30
+
+    - name: List build output
+      run: |
+        echo "Build completed successfully!"
+        ls -la dist/
+        echo "File size:"
+        du -h dist/index.html
