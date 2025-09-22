@@ -9,7 +9,6 @@
     "build:single-pwa": "node scripts/build-single-file.js --keep-pwa",
     "build:single-only": "vite build --config vite.config.js",
     "build:single-debug": "vite build --config vite.config.js --logLevel info",
-    "test:single": "node scripts/test-single-file.js",
     "dev": "vite serve"
   },
   "keywords": [

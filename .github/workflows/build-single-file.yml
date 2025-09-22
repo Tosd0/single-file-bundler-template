@@ -25,7 +25,7 @@ jobs:
       run: npm ci
 
     - name: Build single file
-      run: npm run build:single-clean # 可以根据需求和 README.md 修改为其他构建方式
+      run: npm run build:single # 可以根据需求和 README.md 修改为其他构建方式
 
     - name: Upload build artifact
       uses: actions/upload-artifact@v4

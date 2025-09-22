@@ -58,9 +58,6 @@ npm run build:single
 
 #### 第五步：测试
 ```bash
-# 自动测试
-npm run test:single
-
 # 手动测试
 open dist/index.html  # macOS
 start dist/index.html # Windows
@@ -198,8 +195,8 @@ npm run dev
 # 保存后重新构建
 npm run build:single
 
-# 快速测试
-npm run test:single
+# 快速验证
+open dist/index.html
 ```
 
 ### 生产模式
@@ -208,7 +205,7 @@ npm run test:single
 npm run build:single
 
 # 或者只生成单个文件
-npm run build:single-clean
+npm run build:single
 ```
 
 ## 🖼️ 资源处理策略
@@ -391,7 +388,7 @@ ls -la dist/
 file dist/index.html
 
 # 验证文件完整性
-npm run test:single
+open dist/index.html
 ```
 
 ### 运行时问题排查
@@ -415,7 +412,7 @@ BUILD_VERSION=$(date +%Y%m%d_%H%M%S) npm run build:single
 # 批量构建多个项目
 for project in project1 project2 project3; do
     cd $project
-    npm run build:single-clean
+    npm run build:single
     cd ..
 done
 ```
@@ -444,7 +441,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
       - run: npm ci
-      - run: npm run build:single-clean
+      - run: npm run build:single
       - uses: actions/upload-artifact@v4
         with:
           name: single-file-build
@@ -459,7 +456,7 @@ jobs:
 A: 检查图片路径是否正确，确保文件存在于指定位置，或图片过大，转Base64时出现问题。
 
 **Q: JavaScript功能不工作**
-A: 运行`npm run test:single`检查语法错误，或者在浏览器控制台查看错误信息。
+A: 在浏览器控制台查看错误信息，检查JavaScript语法错误。
 
 **Q: 文件太大**
 A: 考虑压缩图片资源，或者在vite.config.js中启用minify选项。
